@@ -25,12 +25,14 @@ app.use("/api/recommendation", recommendationRoutes);
 app.use("/api/fertilizer-guide", cropGuideRoutes);
 
 
-const startServer = async () => {
-    await connectDB();
+// Database connection
+connectDB();
 
+// Start local server if not running on Vercel
+if (process.env.NODE_ENV !== "production" && !process.env.VERCEL) {
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);
     });
-};
+}
 
-startServer();
+export default app;
