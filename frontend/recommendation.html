@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroSense - Recommendation Report</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="dashboard.html" class="nav-brand">AgroSense 🌱</a>
+    <div class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="farm.html">My Farms</a>
+        <a href="history.html">History</a>
+        <a href="fertilizers.html">Fertilizer Guide</a>
+        <a href="#" class="btn-logout" id="logoutBtn">Logout</a>
+    </div>
+</nav>
+
+<main class="main-content">
+    <div class="recommendation-panel">
+        <div class="dashboard-header" style="text-align: center;">
+            <h1>Analysis Report</h1>
+            <p>Soil metrics calculation and farming advice for <b id="recFarmName">-</b> (<span id="recFarmLocation">-</span>)</p>
+        </div>
+
+        <div class="panel-card text-center" style="margin-top: 30px;">
+            <div class="result-badge-container">
+                <div class="result-label">Recommended Crop</div>
+                <div class="result-crop" id="recCrop">Rice</div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+                <div class="fertilizer-card" style="margin-top: 0;">
+                    <div class="result-label">Suggested Fertilizer Treatment</div>
+                    <div class="fertilizer-value" id="recFertilizer">Organic Compost</div>
+                </div>
+                <div class="fertilizer-card" style="margin-top: 0; background: #e0f2fe; border: 1px solid #bae6fd;">
+                    <div class="result-label" style="color: #0369a1;">Water Requirement</div>
+                    <div class="fertilizer-value" id="recWater" style="color: #0284c7;">Medium</div>
+                </div>
+            </div>
+
+
+            <h3 style="font-size: 18px; margin: 30px 0 15px 0; color: var(--text-primary); text-align: left; border-bottom: 1px solid var(--border-color); padding-bottom: 5px;">Analyzed Soil Profile</h3>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-label">Soil pH</div>
+                    <div class="metric-value" id="recPH">-</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">Nitrogen (N)</div>
+                    <div class="metric-value" id="recN">- mg/kg</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">Phosphorus (P)</div>
+                    <div class="metric-value" id="recP">- mg/kg</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">Potassium (K)</div>
+                    <div class="metric-value" id="recK">- mg/kg</div>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 15px; margin-top: 30px;">
+                <a href="dashboard.html" class="btn" style="text-decoration: none; flex: 1;">Go to Dashboard</a>
+                <a href="history.html" class="btn btn-secondary" style="text-decoration: none; flex: 1;">View History Log</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

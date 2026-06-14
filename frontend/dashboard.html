@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroSense - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="dashboard.html" class="nav-brand">AgroSense 🌱</a>
+    <div class="nav-links">
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="farm.html">My Farms</a>
+        <a href="history.html">History</a>
+        <a href="fertilizers.html">Fertilizer Guide</a>
+        <a href="#" class="btn-logout" id="logoutBtn">Logout</a>
+    </div>
+</nav>
+
+<main class="main-content">
+    <div class="dashboard-header">
+        <h1>Welcome, <span id="welcomeName">Farmer</span>! 🌱</h1>
+        <p>Your smart assistant for precision farming, soil analysis, and crop optimization.</p>
+    </div>
+
+    <!-- Stats Overview -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">🚜</div>
+            <div class="stat-info">
+                <h3>Total Farms</h3>
+                <p id="statFarms">-</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <div class="stat-info">
+                <h3>Recommendations</h3>
+                <p id="statRecommendations">-</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🌾</div>
+            <div class="stat-info">
+                <h3>Latest Advice</h3>
+                <p id="statLatestCrop" style="font-size: 22px;">-</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-layout">
+        <!-- Recent recommendations -->
+        <div class="panel-card">
+            <h2>Recent Recommendations</h2>
+            <div id="recentRecommendationsList">
+                <div class="empty-state">
+                    <div class="empty-state-icon">🔬</div>
+                    <p>Loading recent suggestions...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agricultural tips and info -->
+        <div class="panel-card" style="height: fit-content;">
+            <h2>Quick Insights</h2>
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <div style="background: #fff8eb; border-left: 4px solid var(--accent); padding: 12px; border-radius: 8px;">
+                    <h4 style="color: #b45309; font-size: 15px;">Soil Health Alert</h4>
+                    <p style="font-size: 13px; color: #78350f; margin-top: 4px;">Maintaining a soil pH between 6.0 and 7.0 is ideal for most cereal crops like Rice and Wheat.</p>
+                </div>
+                <div style="background: #eff6ff; border-left: 4px solid #3b82f6; padding: 12px; border-radius: 8px;">
+                    <h4 style="color: #1d4ed8; font-size: 15px;">Nitrogen Optimization</h4>
+                    <p style="font-size: 13px; color: #1e3a8a; margin-top: 4px;">High nitrogen levels encourage leaf growth, whereas phosphorus is critical for root development.</p>
+                </div>
+                <div style="background: #f0fdf4; border-left: 4px solid var(--primary); padding: 12px; border-radius: 8px;">
+                    <h4 style="color: var(--primary-hover); font-size: 15px;">Crop Rotation Tip</h4>
+                    <p style="font-size: 13px; color: var(--text-primary); margin-top: 4px;">Rotate grains with legume crops (beans/peas) to naturally restore soil nitrogen levels.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

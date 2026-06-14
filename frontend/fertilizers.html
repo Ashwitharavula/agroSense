@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroSense - Fertilizer Guide</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .search-container {
+            margin-bottom: 25px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .search-input {
+            flex: 1;
+        }
+        .table-responsive {
+            overflow-x: auto;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            background: var(--primary-light);
+            color: var(--primary-hover);
+            font-weight: 600;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover {
+            background: #f8fafc;
+        }
+        .category-badge {
+            background: #f1f5f9;
+            color: var(--text-secondary);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="dashboard.html" class="nav-brand">AgroSense 🌱</a>
+    <div class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="farm.html">My Farms</a>
+        <a href="history.html">History</a>
+        <a href="fertilizers.html" class="active">Fertilizer Guide</a>
+        <a href="#" class="btn-logout" id="logoutBtn">Logout</a>
+    </div>
+</nav>
+
+<main class="main-content">
+    <div class="dashboard-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+        <div>
+            <h1>Fertilizer & NPK Reference Guide</h1>
+            <p>Search standard fertilizer treatments and NPK values (kg/acre) for 100 agricultural crops.</p>
+        </div>
+        <button class="btn" id="openAddCropModalBtn" style="width: auto;">➕ Add Custom Crop</button>
+    </div>
+
+    <!-- Search Input -->
+    <div class="search-container panel-card">
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+            <label for="guideSearch" style="font-size: 14px; font-weight: 500; color: var(--text-secondary);">Search for a crop</label>
+            <input type="text" id="guideSearch" class="input-control search-input" placeholder="Type crop name (e.g. Paddy, Chili, Tomato)...">
+        </div>
+    </div>
+
+    <!-- Responsive Table -->
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Crop Name</th>
+                    <th>Category</th>
+                    <th>Water Need</th>
+                    <th>Fertilizer Mix</th>
+                    <th>NPK (kg/acre)</th>
+                </tr>
+            </thead>
+            <tbody id="guideTableBody">
+                <tr>
+                    <td colspan="5" class="text-center" style="color: var(--text-secondary); padding: 40px 20px;">
+                        🔍 Enter a crop name in the search bar above to see its fertilizer guide.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Custom Crop Modal -->
+    <div class="modal" id="addCropModal">
+        <div class="modal-content panel-card" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2>Add Custom Crop Guide</h2>
+                <span class="close-btn" id="closeAddCropModalBtn">&times;</span>
+            </div>
+            <form id="addCropForm" style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;">
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <label for="cropName" style="font-weight: 500; font-size: 14px;">Crop Name</label>
+                    <input type="text" id="cropName" class="input-control" placeholder="e.g. Mustard, Saffron" required>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <label for="cropCategory" style="font-weight: 500; font-size: 14px;">Category</label>
+                    <select id="cropCategory" class="input-control" required>
+                        <option value="Cereals">Cereals</option>
+                        <option value="Vegetables">Vegetables</option>
+                        <option value="Pulses">Pulses</option>
+                        <option value="Cash Crops">Cash Crops</option>
+                        <option value="Fruits & Others">Fruits & Others</option>
+                    </select>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <label for="cropWater" style="font-weight: 500; font-size: 14px;">Water Need</label>
+                    <select id="cropWater" class="input-control" required>
+                        <option value="Low">Low</option>
+                        <option value="Low–Medium">Low–Medium</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="Medium–High">Medium–High</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <label for="cropFertilizer" style="font-weight: 500; font-size: 14px;">Fertilizer Mix</label>
+                    <input type="text" id="cropFertilizer" class="input-control" placeholder="e.g. Urea + DAP + MOP" required>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <label for="cropNpk" style="font-weight: 500; font-size: 14px;">NPK (kg/acre)</label>
+                    <input type="text" id="cropNpk" class="input-control" placeholder="e.g. 60–30–20" required>
+                </div>
+                <button type="submit" class="btn" style="margin-top: 10px;">💾 Save to Database</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>
