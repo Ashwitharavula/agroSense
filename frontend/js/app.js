@@ -1,7 +1,7 @@
 // Dynamic API URL detection: uses localhost in development, or the production URL once deployed
 const API = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
     ? "http://localhost:5000/api"
-    : "https://agrosense-backend.onrender.com/api"; // Once you deploy your backend on Render.com with the name 'agrosense-backend', this will match perfectly!
+    : "https://backend-vert-eta-32.vercel.app/api";
 
 // Helper: Get local storage items
 const getUserId = () => localStorage.getItem("userId");
